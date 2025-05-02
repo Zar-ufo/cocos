@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Caption Generator with TTS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .dropzone {
+      border: 2px dashed #3b82f6;
+      transition: background 0.3s ease;
+    }
+    .dropzone.dragover {
+      background-color: #e0f2fe;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 flex items-center justify-center min-h-screen p-4">
+  <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md text-center space-y-6">
+    <h1 class="text-3xl font-extrabold text-blue-700">🎯 Image Caption Generator</h1>
+
+    <form id="uploadForm" class="space-y-4">
+      <!-- Drag & Drop or Click Area -->
+      <div id="dropZone" class="dropzone p-6 rounded-xl cursor-pointer">
+        <p class="text-gray-500">📁 Drag & drop or click to upload an image</p>
+        <input type="file" id="imageInput" accept="image/*" class="hidden">
+      </div>
+
+      <select id="language" class="block w-full border border-gray-300 rounded p-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option value="en">English</option>
+        <option value="bn">Bangla</option>
+        <option value="ar">Arabic</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="hi">Hindi</option>
+        <option value="zh-cn">Chinese (Simplified)</option>
+        <option value="de">German</option>
+      </select>
+
+      <img id="preview" class="mx-auto max-h-64 rounded-lg hidden shadow" />
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-xl font-semibold hover:bg-blue-700 transition duration-200">
+        🚀 Generate Caption
+      </button>
+    </form>
+
+    <div id="loading" class="mt-4 hidden">
+      <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-blue-500 mx-auto"></div>
+    </div>
+
+    <div id="captions" class="mt-6 text-left hidden">
+      <p><strong>📝 Caption:</strong> <span id="caption_translated" class="text-gray-700"></span></p>
+      <audio id="caption_audio" controls class="mt-4 w-full hidden" autoplay>
+        <source id="audio_source" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
